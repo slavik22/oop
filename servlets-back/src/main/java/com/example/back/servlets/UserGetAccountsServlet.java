@@ -18,10 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @WebServlet("/user/accounts")
@@ -30,7 +27,7 @@ public class UserGetAccountsServlet extends HttpServlet {
     private final UserDAO userDAO = new UserDAO();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         int userId = (int) request.getAttribute("userId");
 

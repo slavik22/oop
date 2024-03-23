@@ -8,7 +8,6 @@ import com.example.back.dto.UserLoginDTO;
 import com.example.back.dto.UserLoginResponse;
 import com.example.back.model.User;
 import com.google.gson.GsonBuilder;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,13 +21,13 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 
 
-@WebServlet("/login")
+@WebServlet("/user/login")
 public class UserLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final UserDAO userDAO = new UserDAO();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestData = request.getReader().lines().collect(Collectors.joining());
 
         GsonBuilder builder = new GsonBuilder();
@@ -60,5 +59,17 @@ public class UserLoginServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Invalid credentials");
         }
+    }
+
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        setAccessControlHeaders(response);
+        response.setStatus(HttpServletResponse.SC_OK  );
+    }
+    private void setAccessControlHeaders(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
     }
 }

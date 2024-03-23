@@ -2,7 +2,6 @@ package com.example.back.servlets;
 
 import com.example.back.dao.AccountDAO;
 import com.example.back.dao.UserDAO;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ public class UnblockAccountServlet extends HttpServlet {
     private final UserDAO userDAO = new UserDAO();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int userId = (int) request.getAttribute("userId");
 
         if (!userDAO.isAdmin(userId)) {

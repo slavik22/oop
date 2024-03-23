@@ -23,7 +23,7 @@ public class DatabaseUtil {
             try {
                 connection.close();
             } catch (SQLException e) {
-                e.printStackTrace(); // Handle or log the exception
+                e.printStackTrace();
             }
         }
     }

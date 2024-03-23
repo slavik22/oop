@@ -1,11 +1,8 @@
 package com.example.back.servlets;
 
 import com.example.back.dao.PaymentDAO;
-import com.example.back.dao.UserDAO;
 import com.example.back.dto.PaymentDTO;
 import com.example.back.dto.PaymentResponse;
-import com.example.back.dto.UserLoginDTO;
-import com.example.back.model.Account;
 import com.example.back.model.Payment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

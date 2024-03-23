@@ -1,3 +1,5 @@
+package com.example.back.servlets;
+
 import com.example.back.dao.AccountDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

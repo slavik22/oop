@@ -4,7 +4,6 @@ import com.example.back.dao.UserDAO;
 import com.example.back.dto.UserRegisterDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,13 +13,13 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 
-@WebServlet("/register")
+@WebServlet("/user/register")
 public class UserRegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final UserDAO userDAO = new UserDAO();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestData = request.getReader().lines().collect(Collectors.joining());
 
         GsonBuilder builder = new GsonBuilder();
@@ -39,11 +38,5 @@ public class UserRegisterServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("Failed to register user");
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().write("Hello world");
-
     }
 }

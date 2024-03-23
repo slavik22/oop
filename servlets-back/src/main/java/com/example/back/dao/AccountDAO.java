@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 public class AccountDAO {
 
-    // Create account
     public boolean createAccount(Account account, int userId) {
         String createAccountSql = "INSERT INTO account (number, sum, is_locked) VALUES (?, ?, ?)";
         String linkUserAccountSql = "INSERT INTO user_account (user_id, account_number) VALUES (?, ?)";

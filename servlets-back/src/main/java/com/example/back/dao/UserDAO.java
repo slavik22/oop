@@ -24,12 +24,11 @@ public class UserDAO {
             preparedStatement.close();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception
+            e.printStackTrace();
             return false;
         }
     }
 
-    // Login user
     public User loginUser(String email, String password) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
 
@@ -45,12 +44,11 @@ public class UserDAO {
                 return new User(id, name, email, password, isAdmin);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception
+            e.printStackTrace();
         }
         return null;
     }
 
-    // Get all users
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM users";
 
@@ -68,7 +66,7 @@ public class UserDAO {
                 users.add(new User(id, name, email, password, isAdmin));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception
+            e.printStackTrace();
         }
         return users;
     }
