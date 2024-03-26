@@ -1,0 +1,29 @@
+<div>
+    <h2>Account Information</h2>
+    <p>Account Number: {{ account.number }}</p>
+    <p>Balance: {{ account.sum }}</p>
+    <p>Locked: {{ account.isLocked ? 'Yes' : 'No' }}</p>
+  
+    <h3>Deposit Money</h3>
+    <form (submit)="depositMoney()">
+      <div class="form-group">
+        <label for="depositAmount">Amount to Deposit:</label>
+        <input type="number" class="form-control" id="depositAmount" name="depositAmount" [(ngModel)]="depositAmount" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Deposit</button>
+    </form>
+  
+    <h3>Transfer Money</h3>
+    <form (submit)="transferMoney()">
+      <div class="form-group">
+        <label for="transferAmount">Amount to Transfer:</label>
+        <input type="number" class="form-control" id="transferAmount" name="transferAmount" [(ngModel)]="transferAmount" required>
+      </div>
+      <div class="form-group">
+        <label for="recipientAccount">Recipient Account Number:</label>
+        <input type="text" class="form-control" id="recipientAccount" name="recipientAccount" [(ngModel)]="recipientAccount" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Transfer</button>
+    </form>
+  </div>
+  

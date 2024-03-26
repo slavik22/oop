@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>User Accounts</h2>
+    
+    <!-- Render user accounts -->
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Accounts List</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let account of userAccounts" (click)="navigateToAccount(account.number)">
+            <span>Account Number: {{ account.number }}</span><br>
+            <span>Balance: {{ account.sum }}</span><br>
+            <span>Locked: {{ account.isLocked ? 'Yes' : 'No' }}</span><br>
+            <button class="btn btn-primary" (click)="lock(account.number)">Lock Account</button>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Form to create account -->
+      <div class="col-md-6">
+        <h3>Create Account</h3>
+        <form (ngSubmit)="createAccount()">
+          <div class="form-group">
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" class="form-control" id="accountNumber" name="accountNumber" [(ngModel)]="newAccount.number" required>
+          </div>
+          <div class="form-group">
+            <label for="initialBalance">Initial Balance:</label>
+            <input type="number" class="form-control" id="initialBalance" name="initialBalance" [(ngModel)]="newAccount.sum" required>
+          </div>
+          <button type="submit" class="btn btn-success">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,24 @@
+<div *ngIf="accounts">
+    <h2>Admin Accounts</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Account Number</th>
+          <th>Balance</th>
+          <th>Locked</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts">
+          <td>{{ account.number }}</td>
+          <td>{{ account.sum }}</td>
+          <td>{{ account.isLocked ? 'Yes' : 'No' }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="unblockAccount(account.number)" *ngIf="account.isLocked">Unblock</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
